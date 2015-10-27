@@ -18,6 +18,8 @@ function $(a ,b) {
  *  @param    {string}  delete class
  *  @param    {string}  add class
  */
+
+// $a为dom节点，不是jq和zepto的节点
 function changeClass($a, dlass, alass) {
     var s = 1, arr = [],
         dList = dlass.split(/\s+/g),
