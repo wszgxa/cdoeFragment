@@ -8,6 +8,17 @@
 function $(a ,b) {
     return (b || doc).querySelector(a);
 }
+/**
+*  =$$
+*  @about    选择器（一组）
+*  @from     https://gist.github.com/ryanseddon/1009759
+*
+*  @param    {string}    a  选择目标
+*  @param    {selector}  b  root
+*/
+function $$(a ,b) {
+    return (b || doc).querySelectorAll(a)
+}
 
 
 
