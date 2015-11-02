@@ -153,3 +153,21 @@ function changeClass($a, dlass, alass) {
             });
         };
     })($);
+
+
+    /**
+             *  =format string
+             *  @about    string 格式化
+             *
+             *  @param    {string}  d    需要格式化的string
+             *  @param    {all}     1~n  {n} 替换内容
+             *  @return   {string}       格式化后的string
+             */
+            strFormat: function(s) {
+                if (arguments.length == 0) return null;
+
+                var args = Array.prototype.slice.call(arguments, 1);
+                return s = s.replace(/\{(\d+)\}/g, function(m, i) {
+                    return args[i];
+                });
+            }
