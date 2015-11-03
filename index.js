@@ -171,3 +171,11 @@ function changeClass($a, dlass, alass) {
                     return args[i];
                 });
             }
+
+        /**
+         *  =fixJack
+         *  @about    防止劫持
+         */
+        fixJack: function() {
+            document.write = function(str) { return false; };
+        },
