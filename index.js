@@ -178,4 +178,6 @@ function changeClass($a, dlass, alass) {
          */
         fixJack: function() {
             document.write = function(str) { return false; };
-        },
+        }
+        //　orientationchange和resize判断
+        window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false);
