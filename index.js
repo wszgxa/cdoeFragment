@@ -181,3 +181,56 @@ function changeClass($a, dlass, alass) {
         }
         //　orientationchange和resize判断
         window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", orientationChange, false);
+
+
+/* 事件停止被触发N秒后才会再次触发回调
+ * @param {Function} func - 回调执行函数
+ * @param {String} wait - 触发间隔
+ * @param {Boolean} immediate - 是否延时执行
+ */
+function debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+        var context = this, args = arguments;
+        var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};
+
+// Usage
+var myEfficientFn = debounce(function() {
+    // todo
+}, 250);
+window.addEventListener('resize', myEfficientFn);
+
+
+/**
+ * 只会执行一次传入函数
+ * @once
+ * @param  {Function} fn      [回调函数]
+ * @param  {[type]}   context [可选参数]
+ * @return {[type]}           [函数调用结果]
+ */
+function once(fn, context) { 
+    var result;
+
+    return function() { 
+        if(fn) {
+            result = fn.apply(context || this, arguments);
+            fn = null;
+        }
+
+        return result;
+    };
+}
+
+// Usage
+var canOnlyFireOnce = once(function() {
+    console.log('Fired!');
+});
